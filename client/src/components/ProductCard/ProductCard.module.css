@@ -1,0 +1,24 @@
+.card_holder {
+  width: 300px;
+  height: 300px;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+
+.card_holder > img {
+  height: 70%;
+  width: 100%;
+  object-fit: cover;
+  margin: auto;
+}
+.card_holder > p,
+.card_holder > h3 {
+  text-align: left;
+  margin: 0px;
+}

@@ -1,0 +1,21 @@
+.navbar_holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  margin: auto;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 255, 0.363);
+}
+
+.active_nav_tab {
+  text-decoration: none;
+  color: red;
+  margin: 5px 15px;
+}
+
+.nav_tab {
+  text-decoration: none;
+  color: yellow;
+  margin: 5px 15px;
+}

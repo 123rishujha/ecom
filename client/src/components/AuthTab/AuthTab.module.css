@@ -1,0 +1,32 @@
+.main_holder {
+  /* border: 1px solid red; */
+  height: 80vh;
+  /* border: 1px solid red; */
+  margin-top: 30px;
+}
+
+.btn_tab_holder {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  width: 60%;
+  margin: auto;
+}
+
+.tab_component_holder {
+  height: 80%;
+  width: 60%;
+  margin: auto;
+  margin-top: 20px;
+  /* border: 1px solid black; */
+}
+
+@media all and (max-width: 767px) and (min-width: 280px) {
+  .tab_component_holder {
+    height: 80%;
+    width: 80%;
+  }
+  .btn_tab_holder {
+    width: 80%;
+  }
+}
