@@ -3,7 +3,11 @@ import { useSelector, useDispatch } from "react-redux";
 import ListProducts from "../components/ListProducts/ListProducts";
 import Pagination from "../components/Pagination/Pagination";
 
-import { getProducts } from "../redux/product/product.actions";
+
+import {
+  getProducts,
+  getSingleProducts,
+} from "../redux/product/product.actions";
 
 const HomePage = () => {
   const products = useSelector((store) => store.productReducer.products);
