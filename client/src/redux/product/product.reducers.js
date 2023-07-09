@@ -3,7 +3,8 @@ import * as types from "./product.types";
 const init = {
     loading: false,
     error: false,
-    products: []
+    products: [],
+    singleProduct: {}
 }
 
 export const productReducer = (state=init,{type,payload}) =>{
@@ -18,6 +19,10 @@ export const productReducer = (state=init,{type,payload}) =>{
         }
         case types.PRODUCT_GET_SUCCESS : {
             return {...state,loading:false,error:false,products:payload}
+        }
+        
+        case types.SINGLE_PRODUCT_GET_SUCCESS : {
+            return {...state,loading:false,error:false,singleProduct:payload}
         }
         
         default : {
