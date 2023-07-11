@@ -87,27 +87,49 @@ checkoutRouter.post("/stripe-payment", async (req, res) => {
 
 //webhooks below
 // This is your Stripe CLI webhook secret for testing your endpoint locally.
-const endpointSecret = "whsec_6d36c8c2b78c7c1ed6a9522c3b60023d9b3c367f005c04be3e6e2b7cbe4990bf";
+// let endpointSecret =
+//   "whsec_6d36c8c2b78c7c1ed6a9522c3b60023d9b3c367f005c04be3e6e2b7cbe4990bf";
 
-checkoutRouter.post('/webhook', express.raw({type: 'application/json'}), (request, response) => {
-  const sig = request.headers['stripe-signature'];
+let endpointSecret;
 
-  let event;
+checkoutRouter.post(
+  "/webhook",
+  express.raw({ type: "application/json" }),
+  (request, response) => {
+    const sig = request.headers["stripe-signature"];
+    
+    let data;
+    let eventType;
 
-  try {
-    event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
-    conosle.log("Webhook Verified");
-  } catch (err) {
-    console.log(`Webhook Error: ${err.message}`);
-    response.status(400).send(`Webhook Error: ${err.message}`);
-    return;
+    if(endpointSecret){
+    let event;
+      try {
+      event = stripe.webhooks.constructEvent(request.body, sig, endpointSecret);
+      conosle.log("Webhook Verified. working fine");
+    } catch (err) {
+      console.log(`Webhook Error: ${err.message}`);
+      response.status(400).send(`Webhook Error: ${err.message}`);
+      return;
+    }
+      
+      data = event.data.object;
+      eventType = req.body.type;
+    }
+    else{
+      data = req.body.data.object;
+      eventType = req.body.type
+    }
+    
+    //handle the event
+    if(eventType === "checkout.session.compledted"){
+      
+    }
+    
+
+    // Return a 200 response to acknowledge receipt of the event
+    response.send();
   }
-
-  // Return a 200 response to acknowledge receipt of the event
-  response.send().end();
-});
-
-
+);
 
 module.exports = {
   checkoutRouter,
