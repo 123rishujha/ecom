@@ -22,7 +22,8 @@ const SignUp = () => {
 
   const handlSubmit = (e) => {
     e.preventDefault();
-    let payload = { username, email, number: mobile, password };
+    console.log("type", typeof mobile);
+    let payload = { username, email, number: Number(mobile), password };
     console.log(payload);
     handleLogin(payload);
   };

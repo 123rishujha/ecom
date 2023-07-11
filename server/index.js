@@ -10,6 +10,9 @@ const productRoute = require("./routes/product.route");
 const { userRoute } = require("./routes/user.route");
 const { authenticate } = require("./middleware/authenticate.middleware");
 const { cartRoute } = require("./routes/cart.route");
+const { orderRoute } = require("./routes/order.route");
+const { checkoutRouter } = require("./routes/checkout.route");
+
 
 const app = express();
 app.use(express.json());
@@ -19,6 +22,9 @@ app.use("/user", userRoute);
 app.use(authenticate);
 app.use("/products", productRoute);
 app.use("/cart", cartRoute);
+app.use("/order",orderRoute);
+app.use("/payment",checkoutRouter);
+
 app.listen(8080, async () => {
   try {
     await connection();
