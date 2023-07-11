@@ -15,7 +15,7 @@ const authenticate = (req, res, next) => {
       console.log("catch called in decoded in jwt.verify", err);
       res.status(400).json({
         success: false,
-        message: "You are not authenticated",
+        message: "You are not authenticated please login first",
         err: err,
       });
     }
